@@ -1,0 +1,40 @@
+# This will define a planet class to use to model the solar system
+# A planet has a mass, a name, it's own radius, and the radius from the sun
+# It moves in a circular orbit around the sun and thus also has angular velocity
+# Can animate the planets using turtle
+# I would also like the user to be able to change the size of the central mass to see how the planets can change
+# Or should I use Kepler's Laws???
+# need to compute position from the orbital elements!
+# need to calculate time in the main file
+import numpy as np 
+from visual import *
+# mass of the earth
+mass_earth = 5.97e24
+G = 6.67384e-11
+# initial velocity of the earth, used to calculate initial momentum
+velocity_earth = 30e3
+# distance of the earth from the sum
+distance_earth = 149.6e9
+# I'm basing everything off of measurement's of the earth's radius/velocity
+# Using data from NASA
+class Body:
+    def __init__(self, Position, radius_factor, color, mass_factor, velocity_factor):
+        self.pos = vector(0,0,radius_factor*distance_earth)
+        self.radius = 696e6
+        self.color = color
+        self.mass = mass_factor*velocity_earth
+        self.vel = vector(velocity_factor*velocity_earth,0,0)
+        sphere(pos = pos, radius = radius, color=color.color, mass = mass, velocity = vel)
+    def get_force(self):
+        # Returns the force on an orbiting planet given by Newton's law of gravitation
+        force = (G*M*self.m)/(sun_radius + self.radius_from_central + self.radius)**2
+        return force
+
+    def get__angular_velocity(self):
+        # Assumes perfectly circular orbit, uses centripetal force = gravitation force to compute the velocity
+        angular_velocity = np.sqrt((G*M)/(sun_radius + self.radius_from_central + self.radius)**3)
+        return angular_velocity
+
+    def get_linear_velocity(self):
+        linear_velocity = self.get_angular_velocity()*(sun_radius + self.radius_from_central + self.radius)
+        return linear_velocity

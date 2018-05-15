@@ -1,0 +1,9 @@
+#This class will define a sun or central mass of the solar system
+# I would like the user to be able to input the mass so that they can see how our solar system would be different!
+import numpy as np
+
+class Sun:
+
+    def __init__(self, Position, M):
+        self.pos = Position
+        self.m = M

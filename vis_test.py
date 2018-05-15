@@ -1,0 +1,3 @@
+from vpython import *
+
+sun = sphere(pos=(1,2,1),radius = 0.5)
