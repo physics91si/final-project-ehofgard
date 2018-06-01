@@ -1,0 +1,43 @@
+from __future__ import division, print_function
+import body
+import sun
+import solarsystem
+import turtle 
+import numpy as np
+# Now just need to fix the scaling/relative sizes! yay
+# Should scale everything in terms of the Earth's mass, radius, and distance to the sun
+# Otherwise this won't work
+solar_system = solarsystem.SolarSystem(5,5)
+sun = sun.Sun('sun', 5000,10,'yellow')
+solar_system.addSun(sun)
+# for the initial velocities, I am saying that the planet starts at a position of x = position from the sun and y=0
+earth = body.Body('Earth', 47.5,5000, 0.3,0,1.8,1, 'green')
+solar_system.addPlanet(earth)
+
+mercury = body.Body('Mercury', 9.09, 276.5, 0.1161,0,2.862,0.3,'gray')
+solar_system.addPlanet(mercury)
+
+mars = body.Body('Mars', 12.63, 535, 0.456, 0, 1.4544,0.5, 'red')
+solar_system.addPlanet(mars)
+
+jupiter = body.Body('Jupiter', 266.24, 1589000, 0.8, 0, np.sqrt((.1*10)/0.8),1.9, 'orange')
+solar_system.addPlanet(jupiter)
+
+venus = body.Body('Venus', 22.539, 4075, 0.2169,0, 2.124,.9, 'brown')
+solar_system.addPlanet(venus)
+
+saturn = body.Body('Saturn', 224.4375, 476000, 1.5, 0, np.sqrt((.1*10)/1.5),1.7, 'yellow')
+solar_system.addPlanet(saturn)
+
+uranus = body.Body('Uranus', 97.375, 72500,2.5,0,np.sqrt((.1*10)/2.5),1.5,'blue')
+solar_system.addPlanet(uranus)
+
+neptune = body.Body('Neptune', 92.15,85500,3,0,np.sqrt((.1*10)/3),1.4,'purple')
+solar_system.addPlanet(neptune)
+#solar_system.start()
+
+while True:
+    solar_system.movePlanet()
+
+#solar_system.freeze()
+
